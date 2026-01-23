@@ -1,0 +1,85 @@
+﻿<Window x:Class="Materialbeschneidung.Zuschnittlistenfenster"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Zuschnittsliste" Height="550" Width="980"
+        WindowStartupLocation="CenterScreen"
+        Background="#f5f5f7">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Überschrift -->
+        <TextBlock Grid.Row="0" Text="Zuschnittsliste"
+                   FontSize="40"
+                   FontWeight="DemiBold"
+                   Foreground="#333"
+                   HorizontalAlignment="Center"
+                   Margin="0 10 0 25"/>
+
+        <!-- Karte um DataGrid -->
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="12"
+                Padding="20"
+                Margin="40 0 40 0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="12" Opacity="0.25"/>
+            </Border.Effect>
+
+            <DataGrid x:Name="dgZuschnitte"
+                      AutoGenerateColumns="True"
+                      HeadersVisibility="All"
+                      GridLinesVisibility="None"
+                      RowHeight="32"
+                      ColumnHeaderHeight="40"
+                      BorderThickness="0"
+                      AlternatingRowBackground="#f2f2f2"
+                      d:ItemsSource="{d:SampleData ItemCount=15}">
+            </DataGrid>
+        </Border>
+
+        <!-- Button-Zeile -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0 20 40 10">
+
+            <Button Content="Zurück"
+                    Width="100"
+                    Height="36"
+                    Margin="0 0 10 0"
+                    Background="#e0e0e0"
+                    Foreground="#333"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Padding="6"
+                    Click="Button_Click_Zurueck"
+                    FontWeight="SemiBold"
+                    />
+
+            <Button Content="Excel export"
+                    Width="130"
+                    Height="36"
+                    Background="#5331AF"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Padding="6"
+                    FontWeight="SemiBold"
+                    Click="Button_Click_Excel_Export"
+                    >
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="8" Opacity="0.3"/>
+                </Button.Effect>
+            </Button>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
