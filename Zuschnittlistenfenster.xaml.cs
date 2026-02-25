@@ -23,53 +23,53 @@ namespace Materialbeschneidung
 
         private void Button_Click_Excel_Export(object sender, RoutedEventArgs e)
         {
-            var saveFileDialog = new SaveFileDialog
+            var dateiSpeichernBenachrichtigung = new SaveFileDialog
             {
                 Filter = "Excel-Datei (*.xlsx)|*.xlsx",
                 Title = "Speichern unter"
             };
 
-            if (saveFileDialog.ShowDialog() == true)
+            if (dateiSpeichernBenachrichtigung.ShowDialog() == true)
             {
                 using (var workbook = new XLWorkbook())
                 {
                     var worksheet = workbook.Worksheets.Add("Daten");
 
                     // Geht die Kopfspalten durch und schreibt sie in die erste Zeile
-                    for (int c = 0; c < dgZuschnitte.Columns.Count; c++)
+                    for (int i = 0; i < dgZuschnitte.Columns.Count; i++)
                     {
-                        worksheet.Cell(1, c + 1).Value = dgZuschnitte.Columns[c].Header?.ToString();
+                        worksheet.Cell(1, i + 1).Value = dgZuschnitte.Columns[i].Header?.ToString();
                     }
 
 
                     // Datenzeilen
                     for (int r = 0; r < dgZuschnitte.Items.Count; r++)
                     {
-                        var item = dgZuschnitte.Items[r];
-                        if (item == null) continue;
+                        var reihe = dgZuschnitte.Items[r];
+                        if (reihe == null) continue;
 
-                        for (int c = 0; c < dgZuschnitte.Columns.Count; c++)
+                        for (int s = 0; s < dgZuschnitte.Columns.Count; s++)
                         {
-                            var column = dgZuschnitte.Columns[c];
-                            var binding = (column as DataGridBoundColumn)?.Binding as Binding;
+                            var spalten = dgZuschnitte.Columns[s];
+                            var spaltenZuordnung = (spalten as DataGridBoundColumn)?.Binding as Binding;
 
-                            if (binding != null)
+                            if (spaltenZuordnung != null)
                             {
-                                var propertyName = binding.Path.Path;
-                                var value = item.GetType().GetProperty(propertyName)?.GetValue(item);
-                                worksheet.Cell(r + 2, c + 1).Value = value?.ToString() ?? "";
+                                var bezeichnung = spaltenZuordnung.Path.Path;
+                                var spaltenInhalt = reihe.GetType().GetProperty(bezeichnung)?.GetValue(reihe);
+                                worksheet.Cell(r + 2, s + 1).Value = spaltenInhalt?.ToString() ?? "";
                             }
                             else
                             {
-                                worksheet.Cell(r + 2, c + 1).Value = "";
+                                worksheet.Cell(r + 2, s + 1).Value = "";
                             }
                         }
                     }
 
                     worksheet.Columns().AdjustToContents();
-                    workbook.SaveAs(saveFileDialog.FileName);
+                    workbook.SaveAs(dateiSpeichernBenachrichtigung.FileName);
                 }
-                Logging.Info("Excel-Datei erfolgreich exportiert: " + saveFileDialog.FileName);
+                Logging.Info("Excel-Datei erfolgreich exportiert: " + dateiSpeichernBenachrichtigung.FileName);
                 MessageBox.Show("Excel-Datei erfolgreich exportiert!");
             }
         }
