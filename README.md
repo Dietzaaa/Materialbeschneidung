@@ -14,7 +14,7 @@ In der Praxis wurden Zuschnittlisten bisher manuell erstellt:
 Diese Anwendung automatisiert diesen Prozess vollständig und sorgt für:
 - Zeitersparnis
 - Weniger Materialverschwendung
-- Reduzierung von Berechnungsfehlern :contentReference[oaicite:0]{index=0}
+- Reduzierung von Berechnungsfehlern
 
 ## ⚙️ Funktionen
 - 📥 Einlesen von Stücklisten aus einer CAD-Datenbank
@@ -23,7 +23,7 @@ Diese Anwendung automatisiert diesen Prozess vollständig und sorgt für:
 - ♻️ Berücksichtigung von Restmaterial
 - ⚠️ Warnmeldungen bei fehlendem Material
 - 📊 Darstellung in übersichtlichen Tabellen
-- 📤 Export der Ergebnisse nach Excel :contentReference[oaicite:1]{index=1}
+- 📤 Export der Ergebnisse nach Excel
 
 ## 🏗️ Architektur
 Die Anwendung basiert auf einem **3-Schichten-Modell**:
@@ -34,7 +34,7 @@ Die Anwendung basiert auf einem **3-Schichten-Modell**:
 Diese Trennung sorgt für:
 - bessere Wartbarkeit
 - hohe Testbarkeit
-- einfache Erweiterbarkeit :contentReference[oaicite:2]{index=2}
+- einfache Erweiterbarkeit
 
 ## 🖥️ Technologien
 - C# / .NET
@@ -48,7 +48,7 @@ Diese Trennung sorgt für:
 2. Laden der Lagerbestände  
 3. Automatische Berechnung der optimalen Zuschnitte  
 4. Ausgabe der Zuschnittliste  
-5. Optionaler Export nach Excel :contentReference[oaicite:3]{index=3}  
+5. Optionaler Export nach Excel  
 
 ## 📊 Besonderheiten
 - Minimierung von Materialverschnitt
