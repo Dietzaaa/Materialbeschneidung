@@ -65,14 +65,4 @@ Diese Trennung sorgt für:
 
 ## ⚠️ Hinweis zur Ausführung
 
-Diese Anwendung greift auf Testdatenbanken zu und ist **nicht vollständig lauffähig**.
-
-Konkret werden benötigt:
-- CAD-Datenbank (Stücklisten)
-- Lagerdatenbank (Materialbestände)
-
-Ohne diese Datenquellen können:
-- keine Daten geladen werden
-- keine Zuschnittlisten berechnet werden
-
-Die Anwendung dient daher primär als **Demonstration der Architektur und Logik**.
+Diese Anwendung greift auf die Testdatenbanken zu und es müssen die Connectionstrings in der Dataprovider.cs in Zeile 12 und 13 angepasst werden!
